@@ -19,6 +19,7 @@ def detail(request, article_pk):
 # 입력페이지 제공
 def new(request):
     return render(request, 'articles/new.html')
+    
 
 # 데이터를 전달받아서 article 생성
 def create(request):
@@ -32,10 +33,11 @@ def create(request):
     article.save()
     # <a href
     # return render(request, 'articles/create.html')
-    return redirect(f'/articles/{article.pk}/')
+    
+    return redirect('articles:detail',article.pk)
 
 # 사용자로부터 받은 article_pk값에 해당하는 article을 삭제한다.
 def delete(request, article_pk):
     article = Article.objects.get(pk=article_pk)
     article.delete()
-    return redirect('/articles/')
+    return redirect('articles:index')
