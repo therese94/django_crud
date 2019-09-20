@@ -8,9 +8,11 @@ app_name = 'articles'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:article_pk>/', views.detail, name='detail'),
-    path('new/', views.new, name='new'),
+    # path('new/', views.new, name='new'),
+    # create로 들어갈거라서 new는 없앰 - 하나로 합칠거임
     path('create/', views.create, name='create'),
     # /articles/4/delete/
     path('<int:article_pk>/delete/',views.delete, name='delete'),
+    path('<int:article_pk>/update/', views.update, name='update'),
     
 ]

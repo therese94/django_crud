@@ -4,9 +4,11 @@
 
 {% block body %}
   <h1>New Article</h1>
-  <form action="{% url 'articles:create' %}" method="POST/GET">
+  <form action="{% url 'articles:create' %}" method="POST">
+    {% csrf_token %}
     <input type="text" name="title"><br/>
     <textarea name="content" cols="30" rows="10"></textarea><br/>
     <button type="submit">생성하기</button>
+    <a href="{% url 'articles:index' %}">뒤로가기</a>
   </form>
 {% endblock body %}
