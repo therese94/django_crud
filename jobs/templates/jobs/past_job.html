@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Past Job{% endblock title %}
+
+{% block body %}
+  <h1>{{ job.past_job }}</h1>
+  <img src="{{ data }}" alt="">
+  <a href="{% url 'jobs:index' %}">[뒤로가기]</a>
+{% endblock body %}
