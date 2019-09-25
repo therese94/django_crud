@@ -1,4 +1,6 @@
 from django.db import models
+from imagekit.processors import Thumbnail
+from imagekit.models import ImageSpecField
 
 # Create your models here.
 
@@ -7,6 +9,12 @@ class Article(models.Model):
     content = models.TextField() # 문자열 빈 값 저장은 null=True 하지 말기
     
     image = models.ImageField(blank=True)
+    image_thumbnail = ImageSpecField(
+        source='image',
+        processors=[Thumbnail(200,200)],
+        format='JPEG',
+        options={'quality':90},
+    )
     # blank: 데이터 유효성과 관련되어있다
     # null: DB와 관련되어 있다.
     # '', Null

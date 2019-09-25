@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Questions{% endblock title %}
+
+{% block body %}
+  <h1>회식메뉴추천</h1>
+  <h1>{{ question.title }}</h1>
+  <form action="{% url 'questions:vote' %}" method="POST" >
+    {% csrf_token %}
+    <select name="selected">
+      <option value="한식">한식</option>
+      <option value="중식">중식</option>
+      <option value="양식">양식</option>
+    </select>
+    <button type="sumbit">제출</button>
+  </form>
+{% endblock body %}

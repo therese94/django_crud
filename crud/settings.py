@@ -34,9 +34,11 @@ INSTALLED_APPS = [
     #mine
     'articles',
     'jobs',
+    'questions',
 
     # Third party apps
     'django_extensions',
+    'imagekit',
 
     #Django apps
     'django.contrib.admin',

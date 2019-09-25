@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Vote{% endblock title %}
+
+{% block body %}
+  <h1>{{ question.title }}</h1>
+
+  {% for choice in choices %}
+    <p>{{ choice.content }} : {{ choice.votes }}</p>
+  {% endfor %}
+  <a href="{% url 'questions:index' %}">[돌아가기]</a>
+  
+{% endblock body %}

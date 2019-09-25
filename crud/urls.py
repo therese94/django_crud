@@ -27,6 +27,8 @@ urlpatterns = [
     path('articles/', include('articles.urls')),
     path('admin/', admin.site.urls),
     # static('/media/', BASE_DIR/media),
+
+    path('questions/', include('questions.urls')),
 ]
 
 # 사용자가 미디어 파일이 있는 곳으로 올 수 있는 경로를 추가
