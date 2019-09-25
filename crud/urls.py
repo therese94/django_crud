@@ -16,9 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
+    # jobs로 들어왔다면 jobs/urls.py로 이동해
+    path('jobs/', include('jobs.urls')),
+
     # articles로 들어왔다면 articles/urls.py로 이동해
     path('articles/', include('articles.urls')),
-    path('jobs/', include('jobs.urls')),
     path('admin/', admin.site.urls),
+    # static('/media/', BASE_DIR/media),
 ]
+
+# 사용자가 미디어 파일이 있는 곳으로 올 수 있는 경로를 추가
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

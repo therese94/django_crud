@@ -15,7 +15,7 @@ def index(request):
 def past_job(request):
 
     name = request.POST.get('name')
-
+    image = request.FILES.get('image')      ##### 여기
     
     if Job.objects.filter(name=name):
         job = Job.objects.get(name=name)
@@ -23,10 +23,12 @@ def past_job(request):
         job = Job()
         job.name = name
         job.past_job = fake.job()
+        job.profile_image = image
         job.save()
 
     url = URL + job.past_job
     data = requests.get(url).json()
+
     try:
         data = data.get('data')[0].get('images').get('downsized').get('url')
     except:
@@ -39,3 +41,9 @@ def past_job(request):
         
     # context = {'past_jobs':past_jobs}
     return render(request, 'jobs/past_job.html', context)
+
+
+
+
+
+

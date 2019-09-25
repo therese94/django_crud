@@ -4,6 +4,10 @@
 
 {% block body %}
   <h1>{{ job.past_job }}</h1>
-  <img src="{{ data }}" alt="">
+  <img src="{{ data }}" alt=""><br>
+  {% if job.profile_image %}
+  <img src="{{ job.profile_image.url }}" alt="">
+  {% endif %}
+  
   <a href="{% url 'jobs:index' %}">[뒤로가기]</a>
 {% endblock body %}

@@ -38,10 +38,10 @@ def create(request):
     if request.method == 'POST':
         title = request.POST.get('title') # 데이터 따오기
         content = request.POST.get('content')
-
-        article = Article()
-        article.title = title
-        article.content = content
+        image = request.FILES.get('image')
+        article = Article(title=title, content=content, image=image)
+        # article.title = title
+        # article.content = content
         article.save()
         # return render(request, 'articles/create.html')
     
@@ -66,7 +66,9 @@ def update(request, article_pk):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
-
+        image = request.FILES.get('image')
+        if image:
+            article.image = image
         article.title = title
         article.content = content
         article.save()

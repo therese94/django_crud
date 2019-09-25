@@ -4,6 +4,7 @@ from django.db import models
 
 class Job(models.Model):
     name = models.CharField(max_length=20)
+    profile_image = models.ImageField(blank=True)
     past_job = models.TextField()
 
     def __str__(self):

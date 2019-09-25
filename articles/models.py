@@ -4,7 +4,12 @@ from django.db import models
 
 class Article(models.Model):
     title = models.CharField(max_length=20)
-    content = models.TextField()
+    content = models.TextField() # 문자열 빈 값 저장은 null=True 하지 말기
+    
+    image = models.ImageField(blank=True)
+    # blank: 데이터 유효성과 관련되어있다
+    # null: DB와 관련되어 있다.
+    # '', Null
     created_at = models.DateTimeField(auto_now_add=True)        # 이거중요
     updated_at = models.DateTimeField(auto_now=True)
 
